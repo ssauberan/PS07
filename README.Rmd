@@ -1,0 +1,25 @@
+---
+title: "Popularity of Baby Names"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(babynames)
+```
+
+```{r, echo=FALSE}
+babynames_Riley_Casey <- babynames %>% 
+filter(name=="Riley" | name=="Casey")
+```
+
+To what extent have the names Casey and Riley been unisex names over time?
+
+```{r, echo=FALSE}
+ggplot(babynames_Riley_Casey, aes(x=year, y= prop, color=sex)) + geom_line()+facet_wrap(~name)+labs(x="Year", y="Proportion")
+```
